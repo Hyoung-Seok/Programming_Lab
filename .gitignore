@@ -1,8 +1,19 @@
 ```gitignore
 # ============================================================
-# Study_Lab
-# C++ / C# / Unity
-# Visual Studio / Rider / VS Code
+# Programming_Lab
+# C++ / C# / Unity Study & Research Repository
+# ============================================================
+#
+# Repository Root:
+#
+# Programming_Lab/
+# ├── .gitignore
+# ├── README.md
+# ├── Cpp/
+# ├── CSharp/
+# └── UnityLab/
+#
+# Unity-specific ignore rules are restricted to /UnityLab/.
 # ============================================================
 
 
@@ -10,6 +21,7 @@
 # Visual Studio
 # ============================================================
 
+# Visual Studio local cache
 .vs/
 
 # User-specific files
@@ -19,7 +31,7 @@
 *.userosscache
 *.sln.docstates
 
-# Visual Studio cache / database
+# Visual Studio database / cache
 *.VC.db
 *.VC.VC.opendb
 *.opendb
@@ -28,7 +40,7 @@
 *.ncb
 *.ipch
 
-# Visual Studio generated files
+# Visual Studio generated cache
 *.sln.cache
 
 
@@ -54,7 +66,7 @@
 *.tlog
 *.lastbuildstate
 
-# Libraries
+# Static libraries
 *.lib
 *.a
 *.la
@@ -71,7 +83,7 @@
 *.out
 *.app
 
-# Intermediate files
+# Intermediate compiler files
 *.i
 *.ii
 *.s
@@ -86,6 +98,7 @@
 
 [Dd]ebug/
 [Dd]ebugPublic/
+
 [Rr]elease/
 [Rr]eleases/
 
@@ -100,35 +113,27 @@ ARM64/
 bld/
 [Bb]uild[Ll]og.*
 
-# MSBuild
-*.cache
-*.log
-
 
 # ============================================================
 # C# / .NET
 # ============================================================
 
+# Build output
 [Bb]in/
 [Oo]bj/
 
-# .NET generated files
-*.dll
-*.exe
-*.pdb
-
-# NuGet
+# NuGet package output
 *.nupkg
 *.snupkg
 
-# NuGet packages are restored automatically
+# Legacy NuGet packages directory
 packages/
 
 # NuGet generated files
 *.nuget.props
 *.nuget.targets
 
-# .NET tooling
+# .NET generated artifacts
 artifacts/
 
 
@@ -137,85 +142,167 @@ artifacts/
 # ============================================================
 
 .idea/
+.idea_modules/
 
 *.sln.iml
 *.DotSettings.user
-
-# Rider generated files
-.idea_modules/
 
 
 # ============================================================
 # VS Code
 # ============================================================
 
-# Ignore local VS Code workspace settings
+# Local VS Code settings
 .vscode/
 
 # If you later want to share VS Code configuration,
-# remove ".vscode/" above and selectively ignore files instead.
+# remove ".vscode/" and selectively ignore files instead.
 
 
 # ============================================================
-# Unity
+# UnityLab
+# ============================================================
+#
+# All Unity-specific rules are restricted to /UnityLab/.
+#
+# This means standalone C++ / C# project files such as:
+#
+# Cpp/MyProject/MyProject.sln
+# CSharp/MyProject/MyProject.sln
+# CSharp/MyProject/MyProject.csproj
+#
+# are NOT ignored.
 # ============================================================
 
-# Unity generated folders
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
 
-# Memory / profiling
-[Mm]emoryCaptures/
-[Rr]ecordings/
+# ------------------------------------------------------------
+# Unity Generated Directories
+# ------------------------------------------------------------
 
-# Asset Store tools
-[Aa]ssets/AssetStoreTools*
+/UnityLab/**/[Ll]ibrary/
+/UnityLab/**/[Tt]emp/
+/UnityLab/**/[Oo]bj/
+/UnityLab/**/[Ll]ogs/
+/UnityLab/**/[Uu]ser[Ss]ettings/
 
-# Unity generated project files
-*.csproj
-*.sln
-*.slnx
-*.unityproj
+/UnityLab/**/[Mm]emoryCaptures/
+/UnityLab/**/[Rr]ecordings/
 
-# Unity generated IDE files
-*.pidb
-*.booproj
-*.svd
 
-# Unity generated debug files
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
+# ------------------------------------------------------------
+# Unity Build Output
+# ------------------------------------------------------------
 
-# Unity crash reports
-sysinfo.txt
+/UnityLab/**/[Bb]uild/
+/UnityLab/**/[Bb]uilds/
 
-# Unity temporary files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
 
-# Unity build output
-*.apk
-*.aab
-*.unitypackage
+# ------------------------------------------------------------
+# Unity Generated IDE Project Files
+# ------------------------------------------------------------
+
+/UnityLab/**/*.csproj
+/UnityLab/**/*.sln
+/UnityLab/**/*.slnx
+/UnityLab/**/*.unityproj
+
+/UnityLab/**/*.pidb
+/UnityLab/**/*.booproj
+/UnityLab/**/*.svd
+
+/UnityLab/**/*.opendb
+/UnityLab/**/*.VC.db
+
+
+# ------------------------------------------------------------
+# Unity Generated Debug Files
+# ------------------------------------------------------------
+
+/UnityLab/**/*.pdb
+/UnityLab/**/*.mdb
+
+/UnityLab/**/*.pidb.meta
+/UnityLab/**/*.pdb.meta
+/UnityLab/**/*.mdb.meta
+
+
+# ------------------------------------------------------------
+# Unity Crash Reports
+# ------------------------------------------------------------
+
+/UnityLab/**/sysinfo.txt
+
+
+# ------------------------------------------------------------
+# Unity Asset Store Tools
+# ------------------------------------------------------------
+
+/UnityLab/**/[Aa]ssets/AssetStoreTools*
+
+
+# ------------------------------------------------------------
+# Unity Build Packages
+# ------------------------------------------------------------
+
+/UnityLab/**/*.apk
+/UnityLab/**/*.aab
+/UnityLab/**/*.unitypackage
 
 
 # ============================================================
 # Unity Addressables
 # ============================================================
 
-[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/UnityLab/**/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
-# Addressables temporary state
-[Aa]ssets/[Ss]treamingAssets/aa.meta
-[Aa]ssets/[Ss]treamingAssets/aa/*
+/UnityLab/**/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/UnityLab/**/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+# ============================================================
+# Unity - IMPORTANT
+# ============================================================
+#
+# The following should remain tracked:
+#
+# Assets/
+# Packages/
+# ProjectSettings/
+# *.meta
+#
+# Unity .meta files contain GUIDs used for asset references.
+# Never globally ignore *.meta files.
+# ============================================================
+
+
+# ============================================================
+# CMake
+# ============================================================
+
+CMakeFiles/
+CMakeCache.txt
+
+cmake_install.cmake
+CTestTestfile.cmake
+
+compile_commands.json
+
+# Common CMake build directories
+cmake-build-*/
+
+out/build/
+
+
+# ============================================================
+# Package / Dependency Managers
+# ============================================================
+
+# vcpkg
+vcpkg_installed/
+
+# Conan
+.conan/
+.conan2/
 
 
 # ============================================================
@@ -240,39 +327,12 @@ BenchmarkDotNet.Artifacts/
 
 
 # ============================================================
-# CMake
-# ============================================================
-
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-CTestTestfile.cmake
-
-compile_commands.json
-
-# Common CMake build directories
-cmake-build-*/
-out/build/
-
-
-# ============================================================
-# Package / Dependency Managers
-# ============================================================
-
-# vcpkg installed dependencies
-vcpkg_installed/
-
-# Conan
-.conan/
-.conan2/
-
-
-# ============================================================
 # Temporary Files
 # ============================================================
 
 *.tmp
 *.temp
+
 *.bak
 *.backup
 
@@ -284,11 +344,20 @@ vcpkg_installed/
 
 
 # ============================================================
+# Logs
+# ============================================================
+
+*.log
+logs/
+
+
+# ============================================================
 # Windows
 # ============================================================
 
 Thumbs.db
 Thumbs.db:encryptable
+
 ehthumbs.db
 ehthumbs_vista.db
 
@@ -317,36 +386,28 @@ $RECYCLE.BIN/
 
 
 # ============================================================
-# Logs
+# Intentionally Tracked Files
 # ============================================================
-
-*.log
-logs/
-
-
+#
+# C / C++
+#   *.c
+#   *.cpp
+#   *.h
+#   *.hpp
+#
+# C# / .NET
+#   *.cs
+#   *.csproj
+#   *.sln
+#
+# Unity
+#   Assets/
+#   Packages/
+#   ProjectSettings/
+#   *.meta
+#
+# Documentation
+#   *.md
+#
 # ============================================================
-# Keep important source / project files
-# ============================================================
-
-# These are intentionally NOT ignored:
-#
-# *.cpp
-# *.h
-# *.hpp
-# *.c
-# *.cs
-#
-# *.sln / *.csproj are normally useful for standalone
-# Visual Studio projects, but Unity regenerates them.
-#
-# Unity:
-# Assets/
-# Packages/
-# ProjectSettings/
-#
-# Documentation:
-# *.md
-#
-# Git:
-# .gitignore
 ```
