@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 483764286}
   - component: {fileID: 483764285}
   - component: {fileID: 483764284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &483764285
@@ -493,6 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1339906097}
+  - component: {fileID: 1339906101}
   - component: {fileID: 1339906100}
   - component: {fileID: 1339906099}
   - component: {fileID: 1339906098}
@@ -598,6 +599,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339906096}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1339906101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339906096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459c17950558e5f43965b13a89c6248f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopDownPlayer
+  playerCamera: {fileID: 1775549829}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1702345479
 GameObject:
   m_ObjectHideFlags: 0
