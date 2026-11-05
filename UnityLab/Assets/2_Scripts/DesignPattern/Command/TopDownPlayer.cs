@@ -10,21 +10,28 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     [SerializeField] private LayerMask groundLayer;
 
     private MainActions _actions;
+    private CommandInvoker _commandInvoker;
     
     private void Awake()
     {
+        _commandInvoker = new CommandInvoker();
         _actions = new MainActions();
-        _actions.TopDownPlayer.TopdownMove.performed += OnMoveAction;
     }
 
     private void OnEnable()
     {
-        _actions.Enable();
+        _actions.TopDownPlayer.Enable();
+        
+        _actions.TopDownPlayer.TopdownMove.performed += OnMoveAction;
+        _actions.TopDownPlayer.PrevCommand.performed += OnUndoAction;
     }
 
     private void OnDisable()
     {
-        _actions.Disable();
+        _actions.TopDownPlayer.TopdownMove.performed -= OnMoveAction;
+        _actions.TopDownPlayer.PrevCommand.performed -= OnUndoAction;
+        
+        _actions.TopDownPlayer.Disable();
     }
 
     public void MoveTo(Vector3 pos)
@@ -39,7 +46,13 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
 
         if (Physics.Raycast(ray, out var hit, 10000f, groundLayer))
         {
-            MoveTo(hit.point);
+            var move = new MoveCommand(this, hit.point);
+            _commandInvoker.Execute(move);
         }
+    }
+
+    private void OnUndoAction(InputAction.CallbackContext ctx)
+    {
+        _commandInvoker.Undo();
     }
 }

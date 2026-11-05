@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveCommand : ICommand
@@ -7,11 +6,11 @@ public class MoveCommand : ICommand
     private readonly Vector3 _targetPos;
     private Vector3 _prevPos;
 
-    public MoveCommand(IMoveable unit, Vector3 targetPos, Vector3 currentPos)
+    public MoveCommand(IMoveable unit, Vector3 targetPos)
     {
         _unit = unit;
         _targetPos = targetPos;
-        _prevPos = currentPos;
+        _prevPos = _unit.Position;
     }
         
     public void Execute()

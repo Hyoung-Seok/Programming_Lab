@@ -100,6 +100,15 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevCommand"",
+                    ""type"": ""Button"",
+                    ""id"": ""1cc9db02-8e87-45ee-a703-fdfeec77f7d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -113,6 +122,39 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""action"": ""TopdownMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""4821b2c7-70a4-4bc3-8328-0c549351b84d"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevCommand"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""03306b6e-31fd-4fbd-b8ec-fa357596f0a6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard_Mouse"",
+                    ""action"": ""PrevCommand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""b9ed85ca-6ee4-4f68-9b42-8ad5817fb260"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard_Mouse"",
+                    ""action"": ""PrevCommand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -128,6 +170,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         // TopDownPlayer
         m_TopDownPlayer = asset.FindActionMap("TopDownPlayer", throwIfNotFound: true);
         m_TopDownPlayer_TopdownMove = m_TopDownPlayer.FindAction("TopdownMove", throwIfNotFound: true);
+        m_TopDownPlayer_PrevCommand = m_TopDownPlayer.FindAction("PrevCommand", throwIfNotFound: true);
     }
 
     ~@MainActions()
@@ -209,6 +252,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TopDownPlayer;
     private List<ITopDownPlayerActions> m_TopDownPlayerActionsCallbackInterfaces = new List<ITopDownPlayerActions>();
     private readonly InputAction m_TopDownPlayer_TopdownMove;
+    private readonly InputAction m_TopDownPlayer_PrevCommand;
     /// <summary>
     /// Provides access to input actions defined in input action map "TopDownPlayer".
     /// </summary>
@@ -224,6 +268,10 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "TopDownPlayer/TopdownMove".
         /// </summary>
         public InputAction @TopdownMove => m_Wrapper.m_TopDownPlayer_TopdownMove;
+        /// <summary>
+        /// Provides access to the underlying input action "TopDownPlayer/PrevCommand".
+        /// </summary>
+        public InputAction @PrevCommand => m_Wrapper.m_TopDownPlayer_PrevCommand;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -253,6 +301,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @TopdownMove.started += instance.OnTopdownMove;
             @TopdownMove.performed += instance.OnTopdownMove;
             @TopdownMove.canceled += instance.OnTopdownMove;
+            @PrevCommand.started += instance.OnPrevCommand;
+            @PrevCommand.performed += instance.OnPrevCommand;
+            @PrevCommand.canceled += instance.OnPrevCommand;
         }
 
         /// <summary>
@@ -267,6 +318,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @TopdownMove.started -= instance.OnTopdownMove;
             @TopdownMove.performed -= instance.OnTopdownMove;
             @TopdownMove.canceled -= instance.OnTopdownMove;
+            @PrevCommand.started -= instance.OnPrevCommand;
+            @PrevCommand.performed -= instance.OnPrevCommand;
+            @PrevCommand.canceled -= instance.OnPrevCommand;
         }
 
         /// <summary>
@@ -327,5 +381,12 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTopdownMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PrevCommand" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrevCommand(InputAction.CallbackContext context);
     }
 }
