@@ -102,7 +102,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PrevCommand"",
+                    ""name"": ""UndoCommand"",
                     ""type"": ""Button"",
                     ""id"": ""1cc9db02-8e87-45ee-a703-fdfeec77f7d2"",
                     ""expectedControlType"": """",
@@ -130,7 +130,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PrevCommand"",
+                    ""action"": ""UndoCommand"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -141,7 +141,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard_Mouse"",
-                    ""action"": ""PrevCommand"",
+                    ""action"": ""UndoCommand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -152,7 +152,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard_Mouse"",
-                    ""action"": ""PrevCommand"",
+                    ""action"": ""UndoCommand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -170,7 +170,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         // TopDownPlayer
         m_TopDownPlayer = asset.FindActionMap("TopDownPlayer", throwIfNotFound: true);
         m_TopDownPlayer_TopdownMove = m_TopDownPlayer.FindAction("TopdownMove", throwIfNotFound: true);
-        m_TopDownPlayer_PrevCommand = m_TopDownPlayer.FindAction("PrevCommand", throwIfNotFound: true);
+        m_TopDownPlayer_UndoCommand = m_TopDownPlayer.FindAction("UndoCommand", throwIfNotFound: true);
     }
 
     ~@MainActions()
@@ -252,7 +252,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TopDownPlayer;
     private List<ITopDownPlayerActions> m_TopDownPlayerActionsCallbackInterfaces = new List<ITopDownPlayerActions>();
     private readonly InputAction m_TopDownPlayer_TopdownMove;
-    private readonly InputAction m_TopDownPlayer_PrevCommand;
+    private readonly InputAction m_TopDownPlayer_UndoCommand;
     /// <summary>
     /// Provides access to input actions defined in input action map "TopDownPlayer".
     /// </summary>
@@ -269,9 +269,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @TopdownMove => m_Wrapper.m_TopDownPlayer_TopdownMove;
         /// <summary>
-        /// Provides access to the underlying input action "TopDownPlayer/PrevCommand".
+        /// Provides access to the underlying input action "TopDownPlayer/UndoCommand".
         /// </summary>
-        public InputAction @PrevCommand => m_Wrapper.m_TopDownPlayer_PrevCommand;
+        public InputAction @UndoCommand => m_Wrapper.m_TopDownPlayer_UndoCommand;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -301,9 +301,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @TopdownMove.started += instance.OnTopdownMove;
             @TopdownMove.performed += instance.OnTopdownMove;
             @TopdownMove.canceled += instance.OnTopdownMove;
-            @PrevCommand.started += instance.OnPrevCommand;
-            @PrevCommand.performed += instance.OnPrevCommand;
-            @PrevCommand.canceled += instance.OnPrevCommand;
+            @UndoCommand.started += instance.OnUndoCommand;
+            @UndoCommand.performed += instance.OnUndoCommand;
+            @UndoCommand.canceled += instance.OnUndoCommand;
         }
 
         /// <summary>
@@ -318,9 +318,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @TopdownMove.started -= instance.OnTopdownMove;
             @TopdownMove.performed -= instance.OnTopdownMove;
             @TopdownMove.canceled -= instance.OnTopdownMove;
-            @PrevCommand.started -= instance.OnPrevCommand;
-            @PrevCommand.performed -= instance.OnPrevCommand;
-            @PrevCommand.canceled -= instance.OnPrevCommand;
+            @UndoCommand.started -= instance.OnUndoCommand;
+            @UndoCommand.performed -= instance.OnUndoCommand;
+            @UndoCommand.canceled -= instance.OnUndoCommand;
         }
 
         /// <summary>
@@ -382,11 +382,11 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTopdownMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "PrevCommand" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "UndoCommand" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPrevCommand(InputAction.CallbackContext context);
+        void OnUndoCommand(InputAction.CallbackContext context);
     }
 }

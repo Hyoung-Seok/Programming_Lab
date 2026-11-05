@@ -16,7 +16,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PrevCommand",
+                    "name": "UndoCommand",
                     "type": "Button",
                     "id": "1cc9db02-8e87-45ee-a703-fdfeec77f7d2",
                     "expectedControlType": "",
@@ -44,7 +44,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrevCommand",
+                    "action": "UndoCommand",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -55,7 +55,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard_Mouse",
-                    "action": "PrevCommand",
+                    "action": "UndoCommand",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -66,7 +66,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard_Mouse",
-                    "action": "PrevCommand",
+                    "action": "UndoCommand",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

@@ -23,13 +23,13 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
         _actions.TopDownPlayer.Enable();
         
         _actions.TopDownPlayer.TopdownMove.performed += OnMoveAction;
-        _actions.TopDownPlayer.PrevCommand.performed += OnUndoAction;
+        _actions.TopDownPlayer.UndoCommand.performed += OnUndoAction;
     }
 
     private void OnDisable()
     {
         _actions.TopDownPlayer.TopdownMove.performed -= OnMoveAction;
-        _actions.TopDownPlayer.PrevCommand.performed -= OnUndoAction;
+        _actions.TopDownPlayer.UndoCommand.performed -= OnUndoAction;
         
         _actions.TopDownPlayer.Disable();
     }
