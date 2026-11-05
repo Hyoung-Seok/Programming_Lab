@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "name": "MainActions",
+    "maps": [
+        {
+            "name": "TopDownPlayer",
+            "id": "93879ee5-59d9-4491-be28-7d90791daed0",
+            "actions": [
+                {
+                    "name": "TopdownMove",
+                    "type": "Button",
+                    "id": "0421ff20-a424-4f46-8f2f-0113e3eb0c37",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2fd916b5-bb7a-4086-b937-50c0f4a39012",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard_Mouse",
+                    "action": "TopdownMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard_Mouse",
+            "bindingGroup": "Keyboard_Mouse",
+            "devices": []
+        }
+    ]
+}
