@@ -10,7 +10,6 @@ public class MoveCommand : ICommand
     {
         _unit = unit;
         _targetPos = targetPos;
-        _prevPos = _unit.Position;
     }
         
     public void Execute()

@@ -109,6 +109,15 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RedoCommand"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e55b05e-9830-46b7-96f8-49ad7ac70cc6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -155,6 +164,39 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
                     ""action"": ""UndoCommand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""36610447-7500-4b07-9784-b12acef31d65"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RedoCommand"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""7b4d5186-8c42-4acb-8cf8-ceaa1ac5c539"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RedoCommand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""64ff1bcf-0ac1-465c-83f3-276902980da1"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RedoCommand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -171,6 +213,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         m_TopDownPlayer = asset.FindActionMap("TopDownPlayer", throwIfNotFound: true);
         m_TopDownPlayer_TopdownMove = m_TopDownPlayer.FindAction("TopdownMove", throwIfNotFound: true);
         m_TopDownPlayer_UndoCommand = m_TopDownPlayer.FindAction("UndoCommand", throwIfNotFound: true);
+        m_TopDownPlayer_RedoCommand = m_TopDownPlayer.FindAction("RedoCommand", throwIfNotFound: true);
     }
 
     ~@MainActions()
@@ -253,6 +296,7 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
     private List<ITopDownPlayerActions> m_TopDownPlayerActionsCallbackInterfaces = new List<ITopDownPlayerActions>();
     private readonly InputAction m_TopDownPlayer_TopdownMove;
     private readonly InputAction m_TopDownPlayer_UndoCommand;
+    private readonly InputAction m_TopDownPlayer_RedoCommand;
     /// <summary>
     /// Provides access to input actions defined in input action map "TopDownPlayer".
     /// </summary>
@@ -272,6 +316,10 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "TopDownPlayer/UndoCommand".
         /// </summary>
         public InputAction @UndoCommand => m_Wrapper.m_TopDownPlayer_UndoCommand;
+        /// <summary>
+        /// Provides access to the underlying input action "TopDownPlayer/RedoCommand".
+        /// </summary>
+        public InputAction @RedoCommand => m_Wrapper.m_TopDownPlayer_RedoCommand;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -304,6 +352,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @UndoCommand.started += instance.OnUndoCommand;
             @UndoCommand.performed += instance.OnUndoCommand;
             @UndoCommand.canceled += instance.OnUndoCommand;
+            @RedoCommand.started += instance.OnRedoCommand;
+            @RedoCommand.performed += instance.OnRedoCommand;
+            @RedoCommand.canceled += instance.OnRedoCommand;
         }
 
         /// <summary>
@@ -321,6 +372,9 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
             @UndoCommand.started -= instance.OnUndoCommand;
             @UndoCommand.performed -= instance.OnUndoCommand;
             @UndoCommand.canceled -= instance.OnUndoCommand;
+            @RedoCommand.started -= instance.OnRedoCommand;
+            @RedoCommand.performed -= instance.OnRedoCommand;
+            @RedoCommand.canceled -= instance.OnRedoCommand;
         }
 
         /// <summary>
@@ -388,5 +442,12 @@ public partial class @MainActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUndoCommand(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RedoCommand" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRedoCommand(InputAction.CallbackContext context);
     }
 }

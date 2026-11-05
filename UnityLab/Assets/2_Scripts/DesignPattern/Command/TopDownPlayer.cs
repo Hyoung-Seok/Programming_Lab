@@ -24,14 +24,21 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
         
         _actions.TopDownPlayer.TopdownMove.performed += OnMoveAction;
         _actions.TopDownPlayer.UndoCommand.performed += OnUndoAction;
+        _actions.TopDownPlayer.RedoCommand.performed += OnRedoAction;
     }
 
     private void OnDisable()
     {
         _actions.TopDownPlayer.TopdownMove.performed -= OnMoveAction;
         _actions.TopDownPlayer.UndoCommand.performed -= OnUndoAction;
+        _actions.TopDownPlayer.RedoCommand.performed -= OnRedoAction;
         
         _actions.TopDownPlayer.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        _actions.Dispose();
     }
 
     public void MoveTo(Vector3 pos)
@@ -54,5 +61,10 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     private void OnUndoAction(InputAction.CallbackContext ctx)
     {
         _commandInvoker.Undo();
+    }
+
+    private void OnRedoAction(InputAction.CallbackContext ctx)
+    {
+        _commandInvoker.Redo();
     }
 }
