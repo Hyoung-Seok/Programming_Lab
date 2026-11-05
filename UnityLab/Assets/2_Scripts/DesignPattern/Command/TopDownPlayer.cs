@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class TopDownPlayer : MonoBehaviour, IMoveable
 {
+    public Vector3 Position => transform.position;
+    
     [SerializeField] private Camera playerCamera;
     [SerializeField] private LayerMask groundLayer;
 
