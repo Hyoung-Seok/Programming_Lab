@@ -6,16 +6,29 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
 {
     public Vector3 Position => transform.position;
     
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Debug")] 
+    [SerializeField] private GameObject clickPointCheckObj;
+    [SerializeField] private GameObject changePointCheckObj;
+
     private MainActions _actions;
     private CommandInvoker _commandInvoker;
+    private Vector3 _targetPos;
     
     private void Awake()
     {
         _commandInvoker = new CommandInvoker();
         _actions = new MainActions();
+        
+        _targetPos = transform.position;
+    }
+
+    private void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _targetPos, moveSpeed * Time.deltaTime);
     }
 
     private void OnEnable()
@@ -43,7 +56,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
 
     public void MoveTo(Vector3 pos)
     {
-        transform.position = pos;
+        _targetPos = pos;
     }
 
     private void OnMoveAction(InputAction.CallbackContext ctx)
@@ -55,6 +68,8 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
         {
             var move = new MoveCommand(this, hit.point);
             _commandInvoker.Execute(move);
+            
+            CreateCheckPointObject(hit.point, Position);
         }
     }
 
@@ -66,5 +81,14 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     private void OnRedoAction(InputAction.CallbackContext ctx)
     {
         _commandInvoker.Redo();
+    }
+
+    private void CreateCheckPointObject(Vector3 cp1, Vector3 cp2)
+    {
+        var clickPos = new  Vector3(cp1.x, 0f, cp1.z);
+        var charPos = new Vector3(cp2.x, 0f, cp2.z);
+        
+        Instantiate(clickPointCheckObj, clickPos, Quaternion.identity);
+        Instantiate(changePointCheckObj, charPos, Quaternion.identity);
     }
 }

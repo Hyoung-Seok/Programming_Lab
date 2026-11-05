@@ -5,6 +5,7 @@ public class MoveCommand : ICommand
     private readonly IMoveable _unit;
     private readonly Vector3 _targetPos;
     private Vector3 _prevPos;
+    private Vector3? _lastPoint;
 
     public MoveCommand(IMoveable unit, Vector3 targetPos)
     {
@@ -21,5 +22,15 @@ public class MoveCommand : ICommand
     public void Undo()
     {
         _unit.MoveTo(_prevPos);
+    }
+
+    public void Redo()
+    {
+        _unit.MoveTo(_lastPoint ?? _targetPos);
+    }
+
+    public void OnSuperseded()
+    {
+        _lastPoint = _unit.Position;
     }
 }

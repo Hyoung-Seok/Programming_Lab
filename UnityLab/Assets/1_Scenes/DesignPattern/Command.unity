@@ -611,10 +611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459c17950558e5f43965b13a89c6248f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopDownPlayer
+  moveSpeed: 5
   playerCamera: {fileID: 1775549829}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  clickPointCheckObj: {fileID: 7585726469820577287, guid: 75ac3ad45c64db04d8ce9381d7c6c878, type: 3}
+  changePointCheckObj: {fileID: 4229345652697045279, guid: 0da81257002dfbd43a3f321135ef142d, type: 3}
 --- !u!1 &1702345479
 GameObject:
   m_ObjectHideFlags: 0

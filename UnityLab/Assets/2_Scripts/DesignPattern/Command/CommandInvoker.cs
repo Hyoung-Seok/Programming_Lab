@@ -7,6 +7,10 @@ public class CommandInvoker
 
     public void Execute(ICommand command)
     {
+        if (_commandStack.TryPeek(out var lastCommand))
+        {
+            lastCommand.OnSuperseded();
+        }
         command.Execute();
         
         _commandStack.Push(command);
@@ -30,7 +34,7 @@ public class CommandInvoker
             return;
         
         var command = _redoStack.Pop();
-        command.Execute();
+        command.Redo();
         
         _commandStack.Push(command);
     }
