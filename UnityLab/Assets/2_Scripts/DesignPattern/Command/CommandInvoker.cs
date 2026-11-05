@@ -19,23 +19,23 @@ public class CommandInvoker
 
     public void Undo()
     {
-        if (_commandStack.Count == 0)
+        if (!_commandStack.TryPop(out var lastCommand))
+        {
             return;
+        }
         
-        var command = _commandStack.Pop();
-        command.Undo();
-        
-        _redoStack.Push(command);
+        lastCommand.Undo();
+        _redoStack.Push(lastCommand);
     }
 
     public void Redo()
     {
-        if (_redoStack.Count == 0)
+        if (!_redoStack.TryPop(out var lastCommand))
+        {
             return;
+        }
         
-        var command = _redoStack.Pop();
-        command.Redo();
-        
-        _commandStack.Push(command);
+        lastCommand.Redo();
+        _commandStack.Push(lastCommand);
     }
 }
