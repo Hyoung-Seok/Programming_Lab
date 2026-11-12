@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IObserver
 {
-    public void Notify(GameObject entity, PlayerEvent e);
+    public void OnNotify(GameObject entity, PlayerEvent e);
 }

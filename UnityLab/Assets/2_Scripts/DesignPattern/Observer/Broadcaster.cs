@@ -25,7 +25,7 @@ public class Broadcaster
         
         foreach (var observer in _observers)
         {
-            observer.Notify(entity, e);
+            observer.OnNotify(entity, e);
         }
     }
     

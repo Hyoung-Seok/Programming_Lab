@@ -25,7 +25,7 @@ public class Achievements : MonoBehaviour, IObserver
             _player.RemoveObserver(this);
     }
 
-    public void Notify(GameObject entity, PlayerEvent e)
+    public void OnNotify(GameObject entity, PlayerEvent e)
     {
         switch (e)
         {
