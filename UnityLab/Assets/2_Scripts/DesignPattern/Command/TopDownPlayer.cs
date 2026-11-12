@@ -59,7 +59,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     private void OnDestroy()
     {
         _actions.Dispose();
-        _broadcaster.Notify(gameObject, PlayerEvent.REMOVE);
+        _broadcaster.Notify(gameObject, PlayerEvent.Destroyed);
     }
 
     public void MoveTo(Vector3 pos)
@@ -77,7 +77,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
             var move = new MoveCommand(this, hit.point);
             _commandInvoker.Execute(move);
             
-            _broadcaster.Notify(gameObject, PlayerEvent.MOVE);
+            _broadcaster.Notify(gameObject, PlayerEvent.Moved);
             
             if(debugMode)
                 CreateCheckPointObject(hit.point, Position);

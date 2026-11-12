@@ -29,11 +29,11 @@ public class Achievements : MonoBehaviour, IObserver
     {
         switch (e)
         {
-            case PlayerEvent.REMOVE:
+            case PlayerEvent.Destroyed:
                 _player = null;
                 break;
             
-            case PlayerEvent.MOVE:
+            case PlayerEvent.Moved:
                 _moveCount++;
                 
                 if(_moveCount == _goalCount)
