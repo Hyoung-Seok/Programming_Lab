@@ -11,6 +11,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Debug")] 
+    [SerializeField] private bool debugMode;
     [SerializeField] private GameObject clickPointCheckObj;
     [SerializeField] private GameObject changePointCheckObj;
 
@@ -69,7 +70,8 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
             var move = new MoveCommand(this, hit.point);
             _commandInvoker.Execute(move);
             
-            CreateCheckPointObject(hit.point, Position);
+            if(debugMode)
+                CreateCheckPointObject(hit.point, Position);
         }
     }
 
