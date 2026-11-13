@@ -27,6 +27,10 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
     // observer-delegate
     public event Action<GameObject, PlayerEvent> OnPlayerEvent;
     
+    // observer-event
+    public event Action OnPlayerMove;
+    public event Action OnPlayerDestroyed;
+    
     private void Awake()
     {
         _commandInvoker = new CommandInvoker();
@@ -65,6 +69,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
         
         _broadcaster.Notify(gameObject, PlayerEvent.Destroyed);
         OnPlayerEvent?.Invoke(gameObject, PlayerEvent.Destroyed);
+        OnPlayerDestroyed?.Invoke();
     }
 
     public void MoveTo(Vector3 pos)
@@ -84,6 +89,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
             
             _broadcaster.Notify(gameObject, PlayerEvent.Moved);
             OnPlayerEvent?.Invoke(gameObject, PlayerEvent.Moved);
+            OnPlayerMove?.Invoke();
             
             if(debugMode)
                 CreateCheckPointObject(hit.point, Position);

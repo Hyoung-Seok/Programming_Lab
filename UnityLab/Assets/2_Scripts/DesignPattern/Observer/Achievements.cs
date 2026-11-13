@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Achievements : MonoBehaviour, IObserver
 {
+    [SerializeField] private int goalCount = 10;
     private TopDownPlayer _player;
     private int _moveCount = 0;
-    private int _goalCount = 10;
 
     private void Start()
     {
@@ -36,8 +36,8 @@ public class Achievements : MonoBehaviour, IObserver
             case PlayerEvent.Moved:
                 _moveCount++;
                 
-                if(_moveCount == _goalCount)
-                    Debug.Log("10번 움직임 업적 달성");
+                if(_moveCount == goalCount)
+                    Debug.Log($"[Interface] : {goalCount}번 움직임 업적 달성");
                 break;
             
             default:
