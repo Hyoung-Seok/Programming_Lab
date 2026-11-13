@@ -6,6 +6,11 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
 {
     public Vector3 Position => transform.position;
     
+    [Header("Event Channels")]
+    [SerializeField] private PlayerEventChannel moveEvent;
+    [SerializeField] private PlayerEventChannel destroyEvent;
+    
+    [Header("Player Config")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private LayerMask groundLayer;
@@ -70,6 +75,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
         _broadcaster.Notify(gameObject, PlayerEvent.Destroyed);
         OnPlayerEvent?.Invoke(gameObject, PlayerEvent.Destroyed);
         OnPlayerDestroyed?.Invoke();
+        destroyEvent.Raise();
     }
 
     public void MoveTo(Vector3 pos)
@@ -90,6 +96,7 @@ public class TopDownPlayer : MonoBehaviour, IMoveable
             _broadcaster.Notify(gameObject, PlayerEvent.Moved);
             OnPlayerEvent?.Invoke(gameObject, PlayerEvent.Moved);
             OnPlayerMove?.Invoke();
+            moveEvent.Raise();
             
             if(debugMode)
                 CreateCheckPointObject(hit.point, Position);

@@ -701,6 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459c17950558e5f43965b13a89c6248f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TopDownPlayer
+  moveEvent: {fileID: 11400000, guid: 166e554e27e62b2438b31875fa3a2d4c, type: 2}
+  destroyEvent: {fileID: 11400000, guid: 8f007b77174be7740a75b8194112d68a, type: 2}
   moveSpeed: 5
   playerCamera: {fileID: 1775549829}
   groundLayer:
@@ -709,6 +711,53 @@ MonoBehaviour:
   debugMode: 0
   clickPointCheckObj: {fileID: 7585726469820577287, guid: 75ac3ad45c64db04d8ce9381d7c6c878, type: 3}
   changePointCheckObj: {fileID: 4229345652697045279, guid: 0da81257002dfbd43a3f321135ef142d, type: 3}
+--- !u!1 &1549068738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549068740}
+  - component: {fileID: 1549068739}
+  m_Layer: 0
+  m_Name: AchievementsManager_Scriptable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1549068739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549068738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6440476c97feb9f45932fe637fe49176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChannelAchievements
+  moveEvent: {fileID: 11400000, guid: 166e554e27e62b2438b31875fa3a2d4c, type: 2}
+  destroyEvent: {fileID: 11400000, guid: 8f007b77174be7740a75b8194112d68a, type: 2}
+  goalCount: 10
+--- !u!4 &1549068740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549068738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1702345479
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,3 +972,4 @@ SceneRoots:
   - {fileID: 1100639234}
   - {fileID: 270886704}
   - {fileID: 1737895362}
+  - {fileID: 1549068740}
